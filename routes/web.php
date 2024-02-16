@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Comment out or remove the Voyager routes
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
