@@ -23,6 +23,7 @@
         #menu-toggle:checked+#menu {
             display: block;
         }
+        
 
         .hover\:grow {
             transition: all 0.3s;
