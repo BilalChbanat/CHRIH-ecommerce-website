@@ -41,7 +41,7 @@ class MollieController extends Controller
                 "currency" => "USD",
                 "value" => $formattedAmount,
             ],
-            "description" => "Payment for products",
+            "description" => 'product_name',
             "redirectUrl" => route('success'),
             // "webhookUrl" => route('webhooks.mollie'),
             "metadata" => [
@@ -74,6 +74,7 @@ class MollieController extends Controller
             $obj->currency = $payment->amount->currency;
             $obj->payment_status = "Completed";
             $obj->payment_method = "Mollie";
+            $obj->user_id = auth()->id();
             $obj->save();
 
             session()->forget('paymentId');
