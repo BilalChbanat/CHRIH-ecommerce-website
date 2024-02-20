@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Models\Category;
 
 class Product extends Model
 {
     use HasFactory;
-    public $table = 'products';
+    protected $fillable=['name', 'description', 'price', 'category_id', 'image'];
 
-    public function category(){
-        return $this->belongsToMany(Category::class);
-    }
+    public function Category(){
+    return $this->belongsTo(Category::class);
+  }
+
 }
