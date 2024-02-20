@@ -56,4 +56,8 @@ class ProductController extends Controller
             session()->flash('success', 'Product successfully deleted.');
         }
     }
+
+    public function checkout(){
+        return view('checkout');
+    }
 }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("image", 255)->nullable();
             $table->decimal("price", 6, 2);            
             $table->timestamps();
-            $table->unsignedBigInteger('category_id');
+            $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
