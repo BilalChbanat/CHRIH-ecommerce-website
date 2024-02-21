@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use Mollie\Laravel\Facades\Mollie;
@@ -12,12 +13,19 @@ class MollieController extends Controller
     {
         // Calculate the total amount in DHS
         $totalDHS = 0; // Initialize totalDHS
+        $productsDescription = ''; // Initialize products description
 
         if (session('cart')) {
             foreach (session('cart') as $id => $details) {
                 $totalDHS += $details['price'] * $details['quantity'];
+                
+                // Append each product's name and quantity to the description
+                $productsDescription .= $details['name'] . ' (' . $details['quantity'] . '), ';
             }
         }
+
+        // Remove the trailing comma and space from the products description
+        $productsDescription = rtrim($productsDescription, ', ');
 
         // Define the exchange rate
         $exchangeRate = 10;
@@ -41,7 +49,7 @@ class MollieController extends Controller
                 "currency" => "USD",
                 "value" => $formattedAmount,
             ],
-            "description" => 'product_name',
+            "description" => $productsDescription, // Use the products description
             "redirectUrl" => route('success'),
             // "webhookUrl" => route('webhooks.mollie'),
             "metadata" => [
@@ -76,6 +84,13 @@ class MollieController extends Controller
             $obj->payment_method = "Mollie";
             $obj->user_id = auth()->id();
             $obj->save();
+
+            $order = new Order();
+            $order->payment_ref = $paymentId;
+            $order->payment_id = $obj->id;
+            $order->total_price = $payment->amount->value;
+            $order->user_id = auth()->id();
+            $order->save();
 
             session()->forget('paymentId');
             session()->forget('quantity');

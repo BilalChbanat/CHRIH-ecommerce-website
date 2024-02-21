@@ -1,6 +1,15 @@
 @extends('shop')
     
 @section('content')
+
+<div class="categories">
+    <ul>
+        <li><a href="{{ route('home') }}">All</a></li>
+        @foreach ($categories as $category)
+            <li><a href="{{ url("/home?category=".$category->id) }}">{{ $category->name }}</a></li>
+        @endforeach
+    </ul>
+</div>
      
 <div class="row">
     @foreach($products as $product)

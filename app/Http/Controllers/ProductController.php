@@ -4,13 +4,29 @@ namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
 use App\Models\Product;
+use TCG\Voyager\Models\Category;
 
 class ProductController extends Controller
 {
     public function index()
-    {
-        $products = Product::all();
-        return view('products', compact('products'));
+    
+    {       
+     
+
+        if(isset($_GET["category"])){
+            $cate= $_GET["category"];  
+            $products = Product::where('category',  $cate)->get();
+
+           
+        }else  { $products = Product::all();}
+
+       
+         
+
+       
+        $categories = Category::all();
+
+        return view('products', compact('products', 'categories'));
     }
    
     public function productCart()
