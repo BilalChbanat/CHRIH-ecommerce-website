@@ -4,12 +4,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="icon" href="{{ asset('images/e.png') }}" type="image/gif" sizes="16x16">
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite('resources/css/app.css')
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/07948cac4f.js" crossorigin="anonymous"></script>
+    {{-- ------------ --}}
+    
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
+    @vite('resources/css/app.css')
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
         /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
         *,
@@ -694,6 +708,122 @@
             z-index: 10
         }
 
+        .authentication-wrapper {
+        display: flex;
+        flex-basis: 100%;
+        min-height: 100vh;
+        width: 100%;
+        }
+        .authentication-wrapper .authentication-inner {
+        width: 100%;
+        }
+        .authentication-wrapper.authentication-basic {
+        align-items: center;
+        justify-content: center;
+        }
+        .authentication-wrapper.authentication-basic .card-body {
+        padding: 2rem;
+        }
+        .authentication-wrapper.authentication-cover {
+        align-items: flex-start;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner {
+        height: 100%;
+        margin: auto 0;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner .auth-cover-bg {
+        width: 100%;
+        margin: 2rem 0 2rem 2rem;
+        height: calc(100vh - 4rem);
+        border-radius: 1.125rem;
+        position: relative;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner .auth-cover-bg .auth-illustration {
+        max-height: 65%;
+        z-index: 1;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner .platform-bg {
+        position: absolute;
+        width: 100%;
+        bottom: 0%;
+        left: 0%;
+        height: 35%;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner .auth-multisteps-bg-height {
+        height: 100vh;
+        }
+        .authentication-wrapper.authentication-cover .authentication-inner .auth-multisteps-bg-height > img:first-child {
+        z-index: 1;
+        }
+        .authentication-wrapper.authentication-basic .authentication-inner {
+        max-width: 400px;
+        position: relative;
+        }
+        .authentication-wrapper.authentication-basic .authentication-inner:before {
+        width: 238px;
+        height: 233px;
+        content: " ";
+        position: absolute;
+        top: -55px;
+        left: -40px;
+        background-image: url("data:image/svg+xml,%3Csvg width='239' height='234' viewBox='0 0 239 234' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='88.5605' y='0.700195' width='149' height='149' rx='19.5' stroke='%237367F0' stroke-opacity='0.16'/%3E%3Crect x='0.621094' y='33.761' width='200' height='200' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E%0A");
+        }
+        @media (max-width: 575.98px) {
+        .authentication-wrapper.authentication-basic .authentication-inner:before {
+            display: none;
+        }
+        }
+        .authentication-wrapper.authentication-basic .authentication-inner:after {
+        width: 180px;
+        height: 180px;
+        content: " ";
+        position: absolute;
+        z-index: -1;
+        bottom: -30px;
+        right: -56px;
+        background-image: url("data:image/svg+xml,%3Csvg width='181' height='181' viewBox='0 0 181 181' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.30469' y='1.44312' width='178' height='178' rx='19' stroke='%237367F0' stroke-opacity='0.16' stroke-width='2' stroke-dasharray='8 8'/%3E%3Crect x='22.8047' y='22.9431' width='135' height='135' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E");
+        }
+        @media (max-width: 575.98px) {
+        .authentication-wrapper.authentication-basic .authentication-inner:after {
+            display: none;
+        }
+        }
+        .authentication-wrapper .auth-input-wrapper .auth-input {
+        max-width: 50px;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+        font-size: 150%;
+        }
+
+        @media (max-height: 636px) {
+        .auth-multisteps-bg-height {
+            height: 100% !important;
+        }
+        }
+        @media (max-width: 575.98px) {
+        .authentication-wrapper .auth-input-wrapper .auth-input {
+            font-size: 1.125rem;
+        }
+        }
+        #twoStepsForm .fv-plugins-bootstrap5-row-invalid .form-control {
+        border-color: #ea5455;
+        }
+
+        .light-style .authentication-wrapper.authentication-bg {
+        background-color: #fff;
+        }
+        .light-style .auth-cover-bg-color {
+        background-color: #f8f7fa;
+        }
+
+        .dark-style .authentication-wrapper.authentication-bg {
+        background-color: #2f3349;
+        }
+        .dark-style .auth-cover-bg-color {
+        background-color: #25293c;
+        }
+
+
         @media (prefers-reduced-motion: no-preference) {
             .motion-safe\:hover\:scale-\[1\.01\]:hover {
                 --tw-scale-x: 1.01;
@@ -830,19 +960,36 @@
 
 <body class="antialiased">
     <header class="text-gray-600 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <img class="w-[6rem]" src="{{ asset('images/logo.png') }}" alt="E-kolshi Logo">
+        <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
+            <a href="{{ url('/') }}" class="flex title-font font-medium items-center text-gray-900 ">
+                <img class="w-[20rem]" src="{{ asset('images/logo.png') }}" alt="E-kolshi Logo">
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 <a class="mr-5 cursor-pointer hover:text-yellow-700">First Link</a>
-
             </nav>
             @auth
                 <div class="avatar">
-                    <div class="w-[3rem] rounded-full ring ring-blue-50 ring-offset-base-100 ring-offset-2">
+                    {{-- <div class="w-[3rem] rounded-full ring ring-blue-50 ring-offset-base-100 ring-offset-2">
                         <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
-                    </div>
+                    </div> --}}
+                    <div class="avatar dropdown">
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{-- {{ Auth::user()->name }} --}}
+                                    <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
                 </div>
                 {{-- <form action="{{ route('logout') }}" method="post">
                     @csrf
@@ -854,20 +1001,27 @@
                         href="{{ route('register') }}">Sign up</a>
                     <a class="inline-flex items-center justify-center rounded-xl bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
                         href="{{ route('login') }}">Login</a>
+
+                        
                 </div>
 
             @endauth
+            <a class="px-8" href="{{ route('shopping.cart') }}">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>  <span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
+    </a>
+    {{-- //////////////// --}}
+    {{-- //////////////// --}}
         </div>
     </header>
 
     @yield('content')
 
-    <footer class="text-gray-600 body-font bg-orange-50">
+    <footer class="text-gray-600 body-font bg-blue-50">
     <div
         class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <img src="{{ asset('images/logo.png') }}" alt="E-kolshi Logo">
+                <img src="{{ asset('images/logo.svg') }}" alt="E-kolshi Logo">
             </a>
             <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
         </div>
@@ -945,7 +1099,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-orange-100">
+    <div class="bg-blue-100">
         <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p class="text-gray-500 text-sm text-center sm:text-left">© 2024 E-kolshi —
                 <a href="https://github.com/BilalChbanat" rel="noopener noreferrer" class="text-gray-600 ml-1"
@@ -986,6 +1140,10 @@
         </div>
     </div>
 </footer>
+
+
+
+@yield('scripts')
 
 </body>
 

@@ -9,6 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+        
         $products = Product::all();
         return view('products', compact('products'));
     }
@@ -59,5 +60,10 @@ class ProductController extends Controller
 
     public function checkout(){
         return view('checkout');
+    }
+
+    public function total($price, $quntity){
+        $total = 0;
+        return $total +=  $price * $quntity ;
     }
 }
