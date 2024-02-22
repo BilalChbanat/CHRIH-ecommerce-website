@@ -152,8 +152,11 @@
                     </div>
                 </div>
             </nav>
-            
-                <div id="place_result" ></div>
+            <div class="flex flex-col gap-4">
+                <div id="place_result" class="flex flex-row gap-3">
+
+            </div>
+            <div>
              @foreach($products as $product)
 
                         <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
@@ -173,6 +176,8 @@
                         </div>
                 @endforeach
             </div>
+            </div>
+            
            
         
     </section>
