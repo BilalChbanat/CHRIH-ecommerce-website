@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [ProductController::class, 'index'])->name('home'); 
 
 Route::get('/products', [ProductController::class, 'index'])->name('home');  
+Route::get('/search', [ProductController::class, 'search']);  
+
 
 
 Route::get('/shopping-cart', [ProductController::class, 'productCart'])->name('shopping.cart');

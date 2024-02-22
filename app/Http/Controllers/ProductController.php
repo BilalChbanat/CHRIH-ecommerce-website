@@ -23,6 +23,24 @@ class ProductController extends Controller
 
         return view('products', compact('products', 'categories'));
     }
+    function search(Request $request){
+    
+            $products = Product::with("category")->where("name", "like", "%".$request->search_string."%")->get();
+        
+
+        if($products->count()){
+            return response()->json([
+                "status" => true
+                ,
+                "products" => $products
+                ,
+                "token"  => $request->header("X-CSRF-TOKEN")
+            ]);
+        } else  return response()->json([
+            "status" => false
+
+        ]);
+    }
    
     public function productCart()
     {
