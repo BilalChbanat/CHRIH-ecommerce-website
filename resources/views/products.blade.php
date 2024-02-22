@@ -268,8 +268,6 @@
                 </div>
             </section>
 
-
-
         </section>
         <section class="text-gray-600 body-font bg-blue-50">
             <div class="container px-5 py-24 mx-auto flex flex-wrap items-center" data-aos="fade-left" data-aos-easing="linear"
