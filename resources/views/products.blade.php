@@ -156,10 +156,10 @@
                 <div id="place_result" class="flex flex-row gap-3">
 
             </div>
-            <div>
+            <div class="flex flex-row gap-16">
              @foreach($products as $product)
 
-                        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-row" >
                                 <a href="#">
                                 <img class="hover:grow hover:shadow-lg"
                                 {{-- src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80" --}}
