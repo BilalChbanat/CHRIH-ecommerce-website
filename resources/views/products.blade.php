@@ -2,6 +2,8 @@
     
 @section('content')
 
+
+{{-- filter zid hadchi fl home --}}
 <div class="categories">
     <ul>
         <li><a href="{{ route('home') }}">All</a></li>

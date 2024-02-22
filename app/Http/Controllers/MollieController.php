@@ -69,11 +69,9 @@ class MollieController extends Controller
     public function success(Request $request)
     {
         $paymentId = session()->get('paymentId');
-        //dd($paymentId);
         $payment = Mollie::api()->payments->get($paymentId);
-        //dd($payment);
-        if($payment->isPaid())
-        {
+    
+        if ($payment->isPaid()) {
             $obj = new Payment();
             $obj->payment_id = $paymentId;
             $obj->product_name = $payment->description;
@@ -84,18 +82,27 @@ class MollieController extends Controller
             $obj->payment_method = "Mollie";
             $obj->user_id = auth()->id();
             $obj->save();
-
+    
             $order = new Order();
             $order->payment_ref = $paymentId;
+            
+            // Check if the user has made a payment, if not, apply a 10% discount
+            $userMadePayment = Order::where('user_id', auth()->id())->exists();
+            if (!$userMadePayment) {
+                $discount = $payment->amount->value * 0.10;
+                $order->total_price = $payment->amount->value - $discount;
+            } else {
+                $order->total_price = $payment->amount->value;
+            }
+    
             $order->payment_id = $obj->id;
-            $order->total_price = $payment->amount->value;
             $order->user_id = auth()->id();
             $order->save();
-
+    
             session()->forget('paymentId');
             session()->forget('quantity');
-
-            echo 'Payment is successfull.';
+    
+            echo 'Payment is successful.';
         } else {
             return redirect()->route('cancel');
         }
