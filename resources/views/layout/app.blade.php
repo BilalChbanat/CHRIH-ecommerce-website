@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/07948cac4f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     {{-- ------------ --}}
     
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
@@ -1133,6 +1134,7 @@
 
 
 @yield('scripts')
+<script src="{{asset("assets/js/search.js")}}"></script>
 
 </body>
 

@@ -97,6 +97,21 @@
 </section>
     <section class="bg-white py-8">
 
+        
+<div class="max-w-md mx-auto">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 px-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input  type="search" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+</div>
+
+
         <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
 
             <nav id="store" class="w-full z-30 top-0 px-6 py-1">
@@ -138,26 +153,28 @@
                 </div>
             </nav>
             
+                <div id="place_result" ></div>
              @foreach($products as $product)
 
-            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-                    <a href="#">
-                    <img class="hover:grow hover:shadow-lg"
-                    {{-- src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80" --}}
-                        src="{{asset("storage/" . $product['image'])}}">
-                    <div class="pt-3 flex items-center justify-between">
-                        <p class="">{{$product->name}}</p>
-                        <p class=""><a href="{{ route('addproduct.to.cart', $product->id) }}" class=""><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 5L19 12H7.37671M20 16H8L6 3H3M16 5.5H13.5M13.5 5.5H11M13.5 5.5V8M13.5 5.5V3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg></a> </p>
-                        
-                    </div>
-                    <p class="pt-1 text-gray-900">{{ $product->price}} $</p>
-                </a>
-            </div>
+                        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                                <a href="#">
+                                <img class="hover:grow hover:shadow-lg"
+                                {{-- src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80" --}}
+                                    src="{{asset("storage/" . $product['image'])}}">
+                                <div class="pt-3 flex items-center justify-between">
+                                    <p class="">{{$product->name}}</p>
+                                    <p class=""><a href="{{ route('addproduct.to.cart', $product->id) }}" class=""><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 5L19 12H7.37671M20 16H8L6 3H3M16 5.5H13.5M13.5 5.5H11M13.5 5.5V8M13.5 5.5V3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg></a> </p>
+                                    
+                                </div>
+                                <p class="pt-1 text-gray-900">{{ $product->price}} $</p>
+                            </a>
+                        </div>
                 @endforeach
-
-        </div>
+            </div>
+           
+        
     </section>
     <section class="text-gray-600 body-font bg-blue-50">
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
