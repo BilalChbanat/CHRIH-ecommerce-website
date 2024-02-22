@@ -13,13 +13,16 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/07948cac4f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     {{-- ------------ --}}
-    
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
@@ -92,6 +95,45 @@
         samp {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 1em
+        }
+
+        .dropbtn {
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {
+            display: block;
         }
 
         small {
@@ -710,118 +752,138 @@
         }
 
         .authentication-wrapper {
-        display: flex;
-        flex-basis: 100%;
-        min-height: 100vh;
-        width: 100%;
+            display: flex;
+            flex-basis: 100%;
+            min-height: 100vh;
+            width: 100%;
         }
+
         .authentication-wrapper .authentication-inner {
-        width: 100%;
+            width: 100%;
         }
+
         .authentication-wrapper.authentication-basic {
-        align-items: center;
-        justify-content: center;
+            align-items: center;
+            justify-content: center;
         }
+
         .authentication-wrapper.authentication-basic .card-body {
-        padding: 2rem;
+            padding: 2rem;
         }
+
         .authentication-wrapper.authentication-cover {
-        align-items: flex-start;
+            align-items: flex-start;
         }
+
         .authentication-wrapper.authentication-cover .authentication-inner {
-        height: 100%;
-        margin: auto 0;
+            height: 100%;
+            margin: auto 0;
         }
+
         .authentication-wrapper.authentication-cover .authentication-inner .auth-cover-bg {
-        width: 100%;
-        margin: 2rem 0 2rem 2rem;
-        height: calc(100vh - 4rem);
-        border-radius: 1.125rem;
-        position: relative;
+            width: 100%;
+            margin: 2rem 0 2rem 2rem;
+            height: calc(100vh - 4rem);
+            border-radius: 1.125rem;
+            position: relative;
         }
+
         .authentication-wrapper.authentication-cover .authentication-inner .auth-cover-bg .auth-illustration {
-        max-height: 65%;
-        z-index: 1;
+            max-height: 65%;
+            z-index: 1;
         }
+
         .authentication-wrapper.authentication-cover .authentication-inner .platform-bg {
-        position: absolute;
-        width: 100%;
-        bottom: 0%;
-        left: 0%;
-        height: 35%;
+            position: absolute;
+            width: 100%;
+            bottom: 0%;
+            left: 0%;
+            height: 35%;
         }
+
         .authentication-wrapper.authentication-cover .authentication-inner .auth-multisteps-bg-height {
-        height: 100vh;
+            height: 100vh;
         }
-        .authentication-wrapper.authentication-cover .authentication-inner .auth-multisteps-bg-height > img:first-child {
-        z-index: 1;
+
+        .authentication-wrapper.authentication-cover .authentication-inner .auth-multisteps-bg-height>img:first-child {
+            z-index: 1;
         }
+
         .authentication-wrapper.authentication-basic .authentication-inner {
-        max-width: 400px;
-        position: relative;
+            max-width: 400px;
+            position: relative;
         }
+
         .authentication-wrapper.authentication-basic .authentication-inner:before {
-        width: 238px;
-        height: 233px;
-        content: " ";
-        position: absolute;
-        top: -55px;
-        left: -40px;
-        background-image: url("data:image/svg+xml,%3Csvg width='239' height='234' viewBox='0 0 239 234' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='88.5605' y='0.700195' width='149' height='149' rx='19.5' stroke='%237367F0' stroke-opacity='0.16'/%3E%3Crect x='0.621094' y='33.761' width='200' height='200' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E%0A");
+            width: 238px;
+            height: 233px;
+            content: " ";
+            position: absolute;
+            top: -55px;
+            left: -40px;
+            background-image: url("data:image/svg+xml,%3Csvg width='239' height='234' viewBox='0 0 239 234' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='88.5605' y='0.700195' width='149' height='149' rx='19.5' stroke='%237367F0' stroke-opacity='0.16'/%3E%3Crect x='0.621094' y='33.761' width='200' height='200' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E%0A");
         }
+
         @media (max-width: 575.98px) {
-        .authentication-wrapper.authentication-basic .authentication-inner:before {
-            display: none;
+            .authentication-wrapper.authentication-basic .authentication-inner:before {
+                display: none;
+            }
         }
-        }
+
         .authentication-wrapper.authentication-basic .authentication-inner:after {
-        width: 180px;
-        height: 180px;
-        content: " ";
-        position: absolute;
-        z-index: -1;
-        bottom: -30px;
-        right: -56px;
-        background-image: url("data:image/svg+xml,%3Csvg width='181' height='181' viewBox='0 0 181 181' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.30469' y='1.44312' width='178' height='178' rx='19' stroke='%237367F0' stroke-opacity='0.16' stroke-width='2' stroke-dasharray='8 8'/%3E%3Crect x='22.8047' y='22.9431' width='135' height='135' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E");
+            width: 180px;
+            height: 180px;
+            content: " ";
+            position: absolute;
+            z-index: -1;
+            bottom: -30px;
+            right: -56px;
+            background-image: url("data:image/svg+xml,%3Csvg width='181' height='181' viewBox='0 0 181 181' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.30469' y='1.44312' width='178' height='178' rx='19' stroke='%237367F0' stroke-opacity='0.16' stroke-width='2' stroke-dasharray='8 8'/%3E%3Crect x='22.8047' y='22.9431' width='135' height='135' rx='10' fill='%237367F0' fill-opacity='0.08'/%3E%3C/svg%3E");
         }
+
         @media (max-width: 575.98px) {
-        .authentication-wrapper.authentication-basic .authentication-inner:after {
-            display: none;
+            .authentication-wrapper.authentication-basic .authentication-inner:after {
+                display: none;
+            }
         }
-        }
+
         .authentication-wrapper .auth-input-wrapper .auth-input {
-        max-width: 50px;
-        padding-left: 0.4rem;
-        padding-right: 0.4rem;
-        font-size: 150%;
+            max-width: 50px;
+            padding-left: 0.4rem;
+            padding-right: 0.4rem;
+            font-size: 150%;
         }
 
         @media (max-height: 636px) {
-        .auth-multisteps-bg-height {
-            height: 100% !important;
+            .auth-multisteps-bg-height {
+                height: 100% !important;
+            }
         }
-        }
+
         @media (max-width: 575.98px) {
-        .authentication-wrapper .auth-input-wrapper .auth-input {
-            font-size: 1.125rem;
+            .authentication-wrapper .auth-input-wrapper .auth-input {
+                font-size: 1.125rem;
+            }
         }
-        }
+
         #twoStepsForm .fv-plugins-bootstrap5-row-invalid .form-control {
-        border-color: #ea5455;
+            border-color: #ea5455;
         }
 
         .light-style .authentication-wrapper.authentication-bg {
-        background-color: #fff;
+            background-color: #fff;
         }
+
         .light-style .auth-cover-bg-color {
-        background-color: #f8f7fa;
+            background-color: #f8f7fa;
         }
 
         .dark-style .authentication-wrapper.authentication-bg {
-        background-color: #2f3349;
+            background-color: #2f3349;
         }
+
         .dark-style .auth-cover-bg-color {
-        background-color: #25293c;
+            background-color: #25293c;
         }
 
 
@@ -971,8 +1033,9 @@
             @auth
                 <div class="avatar">
                     <div class="avatar dropdown">
-                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
+                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img class="w-[3rem] rounded-full" src="{{ asset('images/7O2A0159.JPG') }}" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -986,7 +1049,6 @@
                         </div>
                     </div>
                 </div>
-                
             @else
                 <div class="flex items-center justify-end gap-3">
                     <a class="hidden items-center justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-150 hover:bg-gray-50 sm:inline-flex"
@@ -994,148 +1056,177 @@
                     <a class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                         href="{{ route('login') }}">Login</a>
 
-                        
+
                 </div>
 
             @endauth
             <a class="px-8" href="{{ route('shopping.cart') }}">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>  <span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
-    </a>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
+                    class="badge bg-danger">{{ count((array) session('cart')) }}</span>
+            </a>
         </div>
     </header>
 
     @yield('content')
 
     <footer class="text-gray-600 body-font bg-blue-50">
-    <div
-        class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
-            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <img src="{{ asset('images/logo.svg') }}" alt="E-kolshi Logo">
-            </a>
-            <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+        <div
+            class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <img src="{{ asset('images/logo.svg') }}" alt="E-kolshi Logo">
+                </a>
+                <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+            </div>
+            <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Tech</a>
+                        </li>
+                        <li>
+                            <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Home care</a>
+                        </li>
+                        <li>
+                            <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Clothing</a>
+                        </li>
+                        <li>
+                            <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Beuaty</a>
+                        </li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Contact Us</h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a href="https://www.linkedin.com/in/bilalchbanat/"
+                                class="text-gray-600 hover:text-gray-800">Linked In</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/ch1b_bilal"
+                                class="text-gray-600 hover:text-gray-800">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/bilalchbanat/"
+                                class="text-gray-600 hover:text-gray-800">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/BledGwin"
+                                class="text-gray-600 hover:text-gray-800">Twitter</a>
+                        </li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Payment</h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">paypal</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Visa</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Master card</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Apple pay</a>
+                        </li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Free delevry</h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Spain</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-600 hover:text-gray-800">U Kingdom</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-600 hover:text-gray-800">France</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-gray-600 hover:text-gray-800">Morocco</a>
+                        </li>
+                    </nav>
+                </div>
+            </div>
         </div>
-        <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                <nav class="list-none mb-10">
-                    <li>
-                        <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Tech</a>
-                    </li>
-                    <li>
-                        <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Home care</a>
-                    </li>
-                    <li>
-                        <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Clothing</a>
-                    </li>
-                    <li>
-                        <a href="" class=" cursor-pointer  text-gray-600 hover:text-gray-800">Beuaty</a>
-                    </li>
-                </nav>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Contact Us</h2>
-                <nav class="list-none mb-10">
-                    <li>
-                        <a href="https://www.linkedin.com/in/bilalchbanat/"
-                            class="text-gray-600 hover:text-gray-800">Linked In</a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/ch1b_bilal"
-                            class="text-gray-600 hover:text-gray-800">Instagram</a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/bilalchbanat/"
-                            class="text-gray-600 hover:text-gray-800">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/BledGwin" class="text-gray-600 hover:text-gray-800">Twitter</a>
-                    </li>
-                </nav>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Payment</h2>
-                <nav class="list-none mb-10">
-                    <li>
-                        <a class="text-gray-600 hover:text-gray-800">paypal</a>
-                    </li>
-                    <li>
-                        <a class="text-gray-600 hover:text-gray-800">Visa</a>
-                    </li>
-                    <li>
-                        <a class="text-gray-600 hover:text-gray-800">Master card</a>
-                    </li>
-                    <li>
-                        <a class="text-gray-600 hover:text-gray-800">Apple pay</a>
-                    </li>
-                </nav>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Free delevry</h2>
-                <nav class="list-none mb-10">
-                    <li>
-                        <a class="text-gray-600 hover:text-gray-800">Spain</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-gray-600 hover:text-gray-800">U Kingdom</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-gray-600 hover:text-gray-800">France</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-gray-600 hover:text-gray-800">Morocco</a>
-                    </li>
-                </nav>
+        <div class="bg-blue-100">
+            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                <p class="text-gray-500 text-sm text-center sm:text-left">© 2024 E-kolshi —
+                    <a href="https://github.com/BilalChbanat" rel="noopener noreferrer" class="text-gray-600 ml-1"
+                        target="_blank">@BilalChbanat</a>
+                </p>
+                <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+                    <a class="text-gray-500">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            class="w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            class="w-5 h-5" viewBox="0 0 24 24">
+                            <path
+                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                        </svg>
+                    </a>
+                    <a class="ml-3 text-gray-500">
+                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                            <path stroke="none"
+                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                            </path>
+                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                        </svg>
+                    </a>
+                </span>
             </div>
         </div>
-    </div>
-    <div class="bg-blue-100">
-        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-            <p class="text-gray-500 text-sm text-center sm:text-left">© 2024 E-kolshi —
-                <a href="https://github.com/BilalChbanat" rel="noopener noreferrer" class="text-gray-600 ml-1"
-                    target="_blank">@BilalChbanat</a>
-            </p>
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                <a class="text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-5 h-5" viewBox="0 0 24 24">
-                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        class="w-5 h-5" viewBox="0 0 24 24">
-                        <path
-                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                        </path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                    </svg>
-                </a>
-                <a class="ml-3 text-gray-500">
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                        <path stroke="none"
-                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
-                        </path>
-                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                    </svg>
-                </a>
-            </span>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 
 
-@yield('scripts')
-<script src="{{asset("assets/js/search.js")}}"></script>
+    @yield('scripts')
+    <script src="{{ asset('assets/js/search.js') }}"></script>
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function toggleSearchInput() {
+            var searchInput = document.getElementById('searchInput');
+            searchInput.style.display = (searchInput.style.display === 'none' || searchInput.style.display === '') ?
+                'block' : 'none';
+        }
+    </script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

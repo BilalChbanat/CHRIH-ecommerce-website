@@ -46,6 +46,7 @@ class ProductController extends Controller
     {
         return view('cart');
     }
+    
     public function addProducttoCart($id)
     {
         $product = Product::findOrFail($id);
