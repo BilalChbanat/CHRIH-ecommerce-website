@@ -969,32 +969,23 @@
             </nav>
             @auth
                 <div class="avatar">
-                    {{-- <div class="w-[3rem] rounded-full ring ring-blue-50 ring-offset-base-100 ring-offset-2">
-                        <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
-                    </div> --}}
                     <div class="avatar dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{-- {{ Auth::user()->name }} --}}
-                                    <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </div>
+                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img class="w-[3rem] rounded-full" src="{{asset('images/7O2A0159.JPG')}}" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                {{-- <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit">logout</button>
-                </form> --}}
+                
             @else
                 <div class="flex items-center justify-end gap-3">
                     <a class="hidden items-center justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-150 hover:bg-gray-50 sm:inline-flex"
@@ -1009,8 +1000,6 @@
             <a class="px-8" href="{{ route('shopping.cart') }}">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>  <span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
     </a>
-    {{-- //////////////// --}}
-    {{-- //////////////// --}}
         </div>
     </header>
 

@@ -3,26 +3,7 @@
 @section('content')
 
 
-{{-- filter zid hadchi fl home --}}
-<div class="categories">
-    <ul>
-        <li><a href="{{ route('home') }}">All</a></li>
-        @foreach ($categories as $category)
-            <li><a href="{{ url("/home?category=".$category->id) }}">{{ $category->name }}</a></li>
-        @endforeach
-    </ul>
-</div>
      
-<div class="row">
-    @foreach($products as $product)
-        <div class="col-md-3 col-6 mb-4">
-            <div class="card">
-                <img src="{{ asset('images') }}/{{ $product->image }}" class="card-img-top"/>
-                <div class="card-body">
-                    <h4 class="card-title">{{ $product->name }}</h4>
-                    {{-- <p>{{ $product->author }}</p> --}}
-                    <p class="card-text"><strong>Price: </strong> ${{ $product->price }}</p>
-                    <p class="btn-holder"><a href="{{ route('addproduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to cart</a> </p>
 <div class="carousel relative container mx-auto" style="max-width:100vw;">
         <div class="bg-white  flex relative z-20 items-center overflow-hidden">
         <div class="container mx-auto px-6 flex relative py-16">
@@ -142,11 +123,22 @@
                                     d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
                             </svg>
                         </a>
+                        
+                        <div class="categories">
+                            <ul class="flex">
+                                <li class="px-4"><a href="{{ route('home') }}">All</a></li>
+                                @foreach ($categories as $category)
+                                    <li class="px-4"><a href="{{ url("/products?category=".$category->id) }}">{{ $category->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+            
 
                     </div>
                 </div>
             </nav>
-                @foreach($products as $product)
+            
+             @foreach($products as $product)
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                     <a href="#">

@@ -25,7 +25,9 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/', [ProductController::class, 'index']);  
+Route::get('/', [ProductController::class, 'index'])->name('home'); 
+
+Route::get('/products', [ProductController::class, 'index'])->name('home');  
 
 
 Route::get('/shopping-cart', [ProductController::class, 'productCart'])->name('shopping.cart');
