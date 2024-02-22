@@ -1,10 +1,12 @@
 @extends('layout.app')
 
 @section('content')
- <div  class="authentication-wrapper authentication-cover authentication-bg ">
+ <div  class="authentication-wrapper authentication-cover authentication-bg " style="    display: flex;
+    align-content: center;
+    justify-content: center;">
       <div class="d-flex justify-content-center">
         <!-- Login -->
-        <div style="margin-left: 5rem;" class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
+        <div style="" class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4 w-[30rem]">
           <div class="w-px-400 mx-auto">
             <!-- Logo -->
             <div class="app-brand mb-4">
