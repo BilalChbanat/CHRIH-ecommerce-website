@@ -9,21 +9,16 @@ use TCG\Voyager\Models\Category;
 class ProductController extends Controller
 {
     public function index()
-    
-    {       
-     
+    {
+        
+        // $products = Product::all();
 
         if(isset($_GET["category"])){
             $cate= $_GET["category"];  
             $products = Product::where('category',  $cate)->get();
 
-           
         }else  { $products = Product::all();}
 
-       
-         
-
-       
         $categories = Category::all();
 
         return view('products', compact('products', 'categories'));
@@ -75,5 +70,10 @@ class ProductController extends Controller
 
     public function checkout(){
         return view('checkout');
+    }
+
+    public function total($price, $quntity){
+        $total = 0;
+        return $total +=  $price * $quntity ;
     }
 }
