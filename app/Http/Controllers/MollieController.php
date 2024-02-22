@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use Mollie\Laravel\Facades\Mollie;
@@ -12,12 +13,19 @@ class MollieController extends Controller
     {
         // Calculate the total amount in DHS
         $totalDHS = 0; // Initialize totalDHS
+        $productsDescription = ''; // Initialize products description
 
         if (session('cart')) {
             foreach (session('cart') as $id => $details) {
                 $totalDHS += $details['price'] * $details['quantity'];
+                
+                // Append each product's name and quantity to the description
+                $productsDescription .= $details['name'] . ' (' . $details['quantity'] . '), ';
             }
         }
+
+        // Remove the trailing comma and space from the products description
+        $productsDescription = rtrim($productsDescription, ', ');
 
         // Define the exchange rate
         $exchangeRate = 10;
@@ -41,7 +49,7 @@ class MollieController extends Controller
                 "currency" => "USD",
                 "value" => $formattedAmount,
             ],
-            "description" => 'product_name',
+            "description" => $productsDescription, // Use the products description
             "redirectUrl" => route('success'),
             // "webhookUrl" => route('webhooks.mollie'),
             "metadata" => [
@@ -61,11 +69,9 @@ class MollieController extends Controller
     public function success(Request $request)
     {
         $paymentId = session()->get('paymentId');
-        //dd($paymentId);
         $payment = Mollie::api()->payments->get($paymentId);
-        //dd($payment);
-        if($payment->isPaid())
-        {
+    
+        if ($payment->isPaid()) {
             $obj = new Payment();
             $obj->payment_id = $paymentId;
             $obj->product_name = $payment->description;
@@ -76,11 +82,27 @@ class MollieController extends Controller
             $obj->payment_method = "Mollie";
             $obj->user_id = auth()->id();
             $obj->save();
-
+    
+            $order = new Order();
+            $order->payment_ref = $paymentId;
+            
+            // Check if the user has made a payment, if not, apply a 10% discount
+            $userMadePayment = Order::where('user_id', auth()->id())->exists();
+            if (!$userMadePayment) {
+                $discount = $payment->amount->value * 0.10;
+                $order->total_price = $payment->amount->value - $discount;
+            } else {
+                $order->total_price = $payment->amount->value;
+            }
+    
+            $order->payment_id = $obj->id;
+            $order->user_id = auth()->id();
+            $order->save();
+    
             session()->forget('paymentId');
             session()->forget('quantity');
-
-            echo 'Payment is successfull.';
+    
+            echo 'Payment is successful.';
         } else {
             return redirect()->route('cancel');
         }
